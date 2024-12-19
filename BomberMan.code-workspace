@@ -1,0 +1,613 @@
+{
+	"folders": [
+		{
+			"name": "BomberMan",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "E:\\Epic Games\\UE_5.3"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "BomberMan Win64 Debug Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberMan Win64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Debug Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 DebugGame Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberMan Win64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Development Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Development Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberMan Win64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Development Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Test Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Test",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Test Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Test",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberMan Win64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Test Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Test",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Shipping Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Shipping",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Shipping",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberMan Win64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberMan Win64 Shipping Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberMan",
+					"Win64",
+					"Shipping",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Debug Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberManEditor Win64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Debug Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Debug",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 DebugGame Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberManEditor Win64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"DebugGame",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Development Build",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Development Rebuild",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Build.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"BomberManEditor Win64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"label": "BomberManEditor Win64 Development Clean",
+				"group": "build",
+				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+				"args": [
+					"BomberManEditor",
+					"Win64",
+					"Development",
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "E:\\Epic Games\\UE_5.3"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch BomberMan (Debug)",
+				"request": "launch",
+				"program": "E:\\Unreal Projects\\BomberMan\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+				"preLaunchTask": "BomberMan Win64 Debug Build",
+				"args": [
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberMan (DebugGame)",
+				"request": "launch",
+				"program": "E:\\Unreal Projects\\BomberMan\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+				"preLaunchTask": "BomberMan Win64 DebugGame Build",
+				"args": [
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberMan (Development)",
+				"request": "launch",
+				"program": "E:\\Unreal Projects\\BomberMan\\Binaries\\Win64\\UnrealGame.exe",
+				"preLaunchTask": "BomberMan Win64 Development Build",
+				"args": [
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberMan (Test)",
+				"request": "launch",
+				"program": "E:\\Unreal Projects\\BomberMan\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+				"preLaunchTask": "BomberMan Win64 Test Build",
+				"args": [
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberMan (Shipping)",
+				"request": "launch",
+				"program": "E:\\Unreal Projects\\BomberMan\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+				"preLaunchTask": "BomberMan Win64 Shipping Build",
+				"args": [
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberManEditor (Debug)",
+				"request": "launch",
+				"program": "E:\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
+				"preLaunchTask": "BomberManEditor Win64 Debug Build",
+				"args": [
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject"
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberManEditor (DebugGame)",
+				"request": "launch",
+				"program": "E:\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
+				"preLaunchTask": "BomberManEditor Win64 DebugGame Build",
+				"args": [
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject"
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Launch BomberManEditor (Development)",
+				"request": "launch",
+				"program": "E:\\Epic Games\\UE_5.3\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+				"preLaunchTask": "BomberManEditor Win64 Development Build",
+				"args": [
+					"E:\\Unreal Projects\\BomberMan\\BomberMan.uproject"
+				],
+				"cwd": "E:\\Epic Games\\UE_5.3",
+				"stopAtEntry": false,
+				"console": "externalTerminal",
+				"type": "cppvsdbg",
+				"visualizerFile": "E:\\Epic Games\\UE_5.3\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+				"sourceFileMap": {
+					"D:\\build\\++UE5\\Sync": "E:\\Epic Games\\UE_5.3"
+				}
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Win64 Development Build",
+				"program": "E:\\Epic Games\\UE_5.3\\Engine\\Build\\BatchFiles\\RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=E:\\Unreal Projects\\BomberMan\\BomberMan.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "externalTerminal",
+				"stopAtEntry": false,
+				"cwd": "E:\\Epic Games\\UE_5.3"
+			}
+		]
+	}
+}
