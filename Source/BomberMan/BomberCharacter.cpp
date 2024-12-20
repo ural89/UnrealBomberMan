@@ -2,11 +2,11 @@
 
 
 #include "BomberCharacter.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
-// Sets default values
 ABomberCharacter::ABomberCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -25,10 +25,20 @@ void ABomberCharacter::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
 void ABomberCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAxis("MoveForward", this, &ABomberCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ABomberCharacter::MoveRight);
 
 }
 
+void ABomberCharacter::MoveForward(float AxisValue)
+{
+	AddMovementInput(FVector::ForwardVector, AxisValue);
+}
+
+void ABomberCharacter::MoveRight(float AxisValue)
+{
+	AddMovementInput(FVector::RightVector, AxisValue);
+}
