@@ -2,7 +2,6 @@
 
 #include "BomberAnimInstance.h"
 #include "BomberCharacter.h"
-#include "GameFramework/CharacterMovementComponent.h"
 
 void UBomberAnimInstance::NativeInitializeAnimation()
 {

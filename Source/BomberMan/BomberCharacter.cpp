@@ -1,36 +1,34 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "BomberCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 ABomberCharacter::ABomberCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
-// Called when the game starts or when spawned
 void ABomberCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f); 
+	bUseControllerRotationYaw = false;
 }
 
-// Called every frame
 void ABomberCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
-void ABomberCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ABomberCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveForward", this, &ABomberCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABomberCharacter::MoveRight);
-
 }
 
 void ABomberCharacter::MoveForward(float AxisValue)
