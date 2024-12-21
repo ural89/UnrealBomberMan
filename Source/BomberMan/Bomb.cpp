@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Bomb.h"
+#include "BombProjectile.h"
 
-// Sets default values
 ABomb::ABomb()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -22,5 +22,13 @@ void ABomb::Tick(float DeltaTime)
 
 void ABomb::Explode()
 {
-	UE_LOG(LogTemp, Warning, TEXT("EXPLODED!!"));
+	FActorSpawnParameters SpawnParameters;
+	for (size_t i = 0; i < 4; i++)
+	{
+		GetWorld()->SpawnActor<ABombProjectile>(
+			BombProjectileClass,
+			GetActorLocation(),
+			GetActorRotation() + FRotator(0, i * 90, 0),
+			SpawnParameters);
+	}
 }

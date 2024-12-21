@@ -27,7 +27,12 @@ private:
 
 private:
 	FTimerHandle ExplosionTimerHandle;
+
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* BombMesh;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ABombProjectile> BombProjectileClass;
 	//TODO: spawn 4 projectiles with smoke trail very fast
 
 
