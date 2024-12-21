@@ -31,4 +31,9 @@ private:
 	void MoveRight(float AxisValue);
 
 private:
+	UPROPERTY(EditAnywhere)
+	class UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere)
+	class USpringArmComponent* SpringArm;
 };
