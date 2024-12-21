@@ -6,13 +6,17 @@
 ABomb::ABomb()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	bReplicates = true;
 	BombMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bomb Mesh"));
+	BombMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
+	BombMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 }
 
 void ABomb::BeginPlay()
 {
 	Super::BeginPlay();
 	GetWorldTimerManager().SetTimer(ExplosionTimerHandle, this, &ABomb::Explode, 3.f);
+	BombMesh->OnComponentEndOverlap.AddDynamic(this, &ABomb::OnOverlapEnd);
 }
 
 void ABomb::Tick(float DeltaTime)
@@ -22,13 +26,22 @@ void ABomb::Tick(float DeltaTime)
 
 void ABomb::Explode()
 {
-	FActorSpawnParameters SpawnParameters;
-	for (size_t i = 0; i < 4; i++)
+	if (HasAuthority())
 	{
-		GetWorld()->SpawnActor<ABombProjectile>(
-			BombProjectileClass,
-			GetActorLocation(),
-			GetActorRotation() + FRotator(0, i * 90, 0),
-			SpawnParameters);
+		FActorSpawnParameters SpawnParameters;
+		for (size_t i = 0; i < 4; i++)
+		{
+			GetWorld()->SpawnActor<ABombProjectile>(
+				BombProjectileClass,
+				GetActorLocation(),
+				GetActorRotation() + FRotator(0, i * 90, 0),
+				SpawnParameters);
+		}
+	Destroy();
 	}
+}
+
+void ABomb::OnOverlapEnd(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)
+{
+	BombMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Block);
 }

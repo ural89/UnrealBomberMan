@@ -28,12 +28,23 @@ public:
 private:
 	UFUNCTION()
 	void MoveForward(float AxisValue);
+
+	UFUNCTION()
 	void MoveRight(float AxisValue);
 
+	UFUNCTION()
+	void Fire();
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ABomb> BombClass;
+
+	UFUNCTION(Server, Reliable)
+	void ServerFire();
 private:
 	UPROPERTY(EditAnywhere)
 	class UCameraComponent* Camera;
 
 	UPROPERTY(EditAnywhere)
 	class USpringArmComponent* SpringArm;
+
 };

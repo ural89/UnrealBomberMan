@@ -9,6 +9,7 @@ ABombProjectile::ABombProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 	MovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Movement Component"));
 
+	bReplicates = true;
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	SetRootComponent(CollisionBox);
 	CollisionBox->SetCollisionObjectType(ECC_BombProjectile);

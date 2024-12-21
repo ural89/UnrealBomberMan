@@ -33,7 +33,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class ABombProjectile> BombProjectileClass;
-	//TODO: spawn 4 projectiles with smoke trail very fast
 
+	UFUNCTION()
+	void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 };
