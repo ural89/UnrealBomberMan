@@ -28,7 +28,7 @@ void ABomberCharacter::BeginPlay()
 
 	if (HasAuthority())
 	{
-		OnTakeAnyDamage.AddDynamic(this, &ABomberCharacter::RecieveDamage);
+		OnTakeAnyDamage.AddDynamic(this, &ABomberCharacter::ReceiveDamage);
 	}
 }
 
@@ -59,7 +59,7 @@ void ABomberCharacter::Fire()
 {
 	ServerFire();
 }
-void ABomberCharacter::RecieveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser)
+void ABomberCharacter::ReceiveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser)
 {
 	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! %s"), *(DamagedActor->GetName()));
 }

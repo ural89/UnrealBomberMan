@@ -43,7 +43,7 @@ private:
 	void ServerFire();
 
 	UFUNCTION()
-	void RecieveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser);
+	void ReceiveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser);
 
 private:
 	UPROPERTY(EditAnywhere)
