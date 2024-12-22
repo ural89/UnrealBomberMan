@@ -1,6 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "MapCreator.h"
+#include "Engine/World.h"
 
 // Sets default values
 AMapCreator::AMapCreator()
@@ -28,15 +27,51 @@ void AMapCreator::Tick(float DeltaTime)
 void AMapCreator::CreateMap()
 {
 	FActorSpawnParameters SpawnParameters;
+
 	for (size_t i = 0; i < GridSizeX; i++)
 	{
 		for (size_t j = 0; j < GridSizeY; j++)
 		{
-			GetWorld()->SpawnActor<AActor>(
-				WallClass,
-				FVector(GetActorLocation().X + WallDistance * i, GetActorLocation().Y + WallDistance * j, 1),
-				FRotator::ZeroRotator,
-				SpawnParameters);
+			FVector SpawnLocation(
+				GetActorLocation().X + WallDistance * i,
+				GetActorLocation().Y + WallDistance * j,
+				GetActorLocation().Z);
+
+			GetWorld()->SpawnActor<AActor>(WallClass, SpawnLocation, FRotator::ZeroRotator, SpawnParameters);
+
+			if (i > 0 && j > 0 && i < GridSizeX - 1 && j < GridSizeY - 1)
+			{
+				float RandomValue = FMath::FRand();
+				if (RandomValue <= DestructibleWallProbability)
+				{
+					FVector DestructibleWallLocation(
+						GetActorLocation().X + WallDistance * i + WallDistance / 2.f,
+						GetActorLocation().Y + WallDistance * j + WallDistance / 2.f,
+						GetActorLocation().Z);
+
+					GetWorld()->SpawnActor<AActor>(DestructableWallClass, DestructibleWallLocation, FRotator::ZeroRotator, SpawnParameters);
+				}
+				RandomValue = FMath::FRand();
+				if (RandomValue <= DestructibleWallProbability)
+				{
+					FVector DestructibleWallLocation(
+						GetActorLocation().X + WallDistance * i + WallDistance,
+						GetActorLocation().Y + WallDistance * j + WallDistance / 2.f,
+						GetActorLocation().Z);
+
+					GetWorld()->SpawnActor<AActor>(DestructableWallClass, DestructibleWallLocation, FRotator::ZeroRotator, SpawnParameters);
+				}
+				RandomValue = FMath::FRand();
+				if (RandomValue <= DestructibleWallProbability)
+				{
+					FVector DestructibleWallLocation(
+						GetActorLocation().X + WallDistance * i + WallDistance / 2.f,
+						GetActorLocation().Y + WallDistance * j + WallDistance,
+						GetActorLocation().Z);
+
+					GetWorld()->SpawnActor<AActor>(DestructableWallClass, DestructibleWallLocation, FRotator::ZeroRotator, SpawnParameters);
+				}
+			}
 		}
 	}
 }
