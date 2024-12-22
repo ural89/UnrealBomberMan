@@ -19,12 +19,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
+
 private:
 	UFUNCTION()
 	void MoveForward(float AxisValue);
@@ -40,11 +41,14 @@ private:
 
 	UFUNCTION(Server, Reliable)
 	void ServerFire();
+
+	UFUNCTION()
+	void RecieveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser);
+
 private:
 	UPROPERTY(EditAnywhere)
-	class UCameraComponent* Camera;
+	class UCameraComponent *Camera;
 
 	UPROPERTY(EditAnywhere)
-	class USpringArmComponent* SpringArm;
-
+	class USpringArmComponent *SpringArm;
 };

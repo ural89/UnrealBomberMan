@@ -10,6 +10,7 @@ ABomb::ABomb()
 	BombMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bomb Mesh"));
 	BombMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 	BombMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	SetRootComponent(BombMesh);
 }
 
 void ABomb::BeginPlay()
@@ -29,6 +30,8 @@ void ABomb::Explode()
 	if (HasAuthority())
 	{
 		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.Instigator = Cast<APawn>(GetOwner());
+		SpawnParameters.Owner = Cast<APawn>(GetOwner());
 		for (size_t i = 0; i < 4; i++)
 		{
 			GetWorld()->SpawnActor<ABombProjectile>(

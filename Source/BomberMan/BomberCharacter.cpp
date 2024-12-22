@@ -25,6 +25,11 @@ void ABomberCharacter::BeginPlay()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
 	bUseControllerRotationYaw = false;
+
+	if (HasAuthority())
+	{
+		OnTakeAnyDamage.AddDynamic(this, &ABomberCharacter::RecieveDamage);
+	}
 }
 
 void ABomberCharacter::Tick(float DeltaTime)
@@ -54,11 +59,15 @@ void ABomberCharacter::Fire()
 {
 	ServerFire();
 }
-
+void ABomberCharacter::RecieveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser)
+{
+	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! %s"), *(DamagedActor->GetName()));
+}
 void ABomberCharacter::ServerFire_Implementation()
 {
 	FActorSpawnParameters SpawnParamameters;
 	SpawnParamameters.Instigator = this;
+	SpawnParamameters.Owner = this;
 	GetWorld()->SpawnActor<ABomb>( //Bomb should be spawn from server
 		BombClass, 
 		GetActorLocation(),
