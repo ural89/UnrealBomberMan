@@ -57,20 +57,40 @@ void ABomberCharacter::MoveRight(float AxisValue)
 
 void ABomberCharacter::Fire()
 {
-	ServerFire();
+	LocalFire(GetActorLocation());
+	ServerFire(GetActorLocation());
 }
-void ABomberCharacter::ReceiveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser)
+void ABomberCharacter::MulticastFire_Implementation(const FVector_NetQuantize& FireLocation)
 {
-	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! %s"), *(DamagedActor->GetName()));
+	if (IsLocallyControlled() && !HasAuthority())
+		return;
+	LocalFire(FireLocation);
 }
-void ABomberCharacter::ServerFire_Implementation()
+void ABomberCharacter::ServerFire_Implementation(const FVector_NetQuantize& FireLocation)
+{
+	MulticastFire(FireLocation);
+	FActorSpawnParameters SpawnParamameters;
+	SpawnParamameters.Instigator = this;
+	SpawnParamameters.Owner = this;
+	GetWorld()->SpawnActor<ABomb>( // Bomb should be spawn from server
+		BombClass,
+		FireLocation,
+		FRotator::ZeroRotator,
+		SpawnParamameters);
+}
+
+void ABomberCharacter::LocalFire(const FVector_NetQuantize& FireLocation)
 {
 	FActorSpawnParameters SpawnParamameters;
 	SpawnParamameters.Instigator = this;
 	SpawnParamameters.Owner = this;
-	GetWorld()->SpawnActor<ABomb>( //Bomb should be spawn from server
-		BombClass, 
-		GetActorLocation(),
+	GetWorld()->SpawnActor<ABomb>( //Fakebomb
+		LocalBombClass,
+		FireLocation,
 		FRotator::ZeroRotator,
 		SpawnParamameters);
+}
+void ABomberCharacter::ReceiveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser)
+{
+	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! %s"), *(DamagedActor->GetName()));
 }

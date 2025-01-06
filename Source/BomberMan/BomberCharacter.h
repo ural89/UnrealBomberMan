@@ -39,8 +39,16 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class ABomb> BombClass;
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ABomb> LocalBombClass;
+
 	UFUNCTION(Server, Reliable)
-	void ServerFire();
+	void ServerFire(const FVector_NetQuantize& FireLocation);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastFire(const FVector_NetQuantize& FireLocation);
+
+	void LocalFire(const FVector_NetQuantize& FireLocation);
 
 	UFUNCTION()
 	void ReceiveDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigatorController, AActor *DamageCauser);
