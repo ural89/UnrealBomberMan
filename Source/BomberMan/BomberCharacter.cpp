@@ -57,18 +57,20 @@ void ABomberCharacter::MoveRight(float AxisValue)
 
 void ABomberCharacter::Fire()
 {
-	//TODO: try this: add this and try. And remove all HasAuth checks and try
-	//if (!HasAuthority)
-	LocalFire(GetActorLocation());
+	// TODO: try this: add this and try. And remove all HasAuth checks and try
+	if (!HasAuthority())
+	{
+		LocalFire(GetActorLocation());
+	}
 	ServerFire(GetActorLocation());
 }
-void ABomberCharacter::MulticastFire_Implementation(const FVector_NetQuantize& FireLocation)
+void ABomberCharacter::MulticastFire_Implementation(const FVector_NetQuantize &FireLocation)
 {
-	if (IsLocallyControlled() && !HasAuthority())//TODO: try this remove !HasAuthority from this
+	if (IsLocallyControlled() && !HasAuthority()) // TODO: try this remove !HasAuthority from this
 		return;
 	LocalFire(FireLocation);
 }
-void ABomberCharacter::ServerFire_Implementation(const FVector_NetQuantize& FireLocation)
+void ABomberCharacter::ServerFire_Implementation(const FVector_NetQuantize &FireLocation)
 {
 	MulticastFire(FireLocation);
 	FActorSpawnParameters SpawnParamameters;
@@ -81,12 +83,12 @@ void ABomberCharacter::ServerFire_Implementation(const FVector_NetQuantize& Fire
 		SpawnParamameters);
 }
 
-void ABomberCharacter::LocalFire(const FVector_NetQuantize& FireLocation)
+void ABomberCharacter::LocalFire(const FVector_NetQuantize &FireLocation)
 {
 	FActorSpawnParameters SpawnParamameters;
 	SpawnParamameters.Instigator = this;
 	SpawnParamameters.Owner = this;
-	GetWorld()->SpawnActor<ABomb>( //Fakebomb
+	GetWorld()->SpawnActor<ABomb>( // Fakebomb
 		LocalBombClass,
 		FireLocation,
 		FRotator::ZeroRotator,
