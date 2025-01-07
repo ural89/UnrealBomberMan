@@ -57,12 +57,14 @@ void ABomberCharacter::MoveRight(float AxisValue)
 
 void ABomberCharacter::Fire()
 {
+	//TODO: try this: add this and try. And remove all HasAuth checks and try
+	//if (!HasAuthority)
 	LocalFire(GetActorLocation());
 	ServerFire(GetActorLocation());
 }
 void ABomberCharacter::MulticastFire_Implementation(const FVector_NetQuantize& FireLocation)
 {
-	if (IsLocallyControlled() && !HasAuthority())
+	if (IsLocallyControlled() && !HasAuthority())//TODO: try this remove !HasAuthority from this
 		return;
 	LocalFire(FireLocation);
 }
